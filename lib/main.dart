@@ -128,10 +128,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   image: AssetImage("assets/a.png"),
                   height: 200,
                   width: 300,
-                  alignment: Alignment.topLeft,
-                  fit: BoxFit.fitHeight,
-                  color: Colors.blue,
-                  colorBlendMode: BlendMode.colorBurn,
+                  //alignment: Alignment.topLeft,
+                  fit: BoxFit.scaleDown,
+                  color: Colors.black45,
+                  colorBlendMode: BlendMode.overlay,
                 ),
               ),
               Image.asset(
@@ -146,12 +146,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   print("pressed");
                 },
+                onLongPress: () {
+                  print("long press");
+                },
                 child: Text("Tap on it"),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 color: Colors.green,
                 mouseCursor: MouseCursor.defer,
+                elevation: 8.0,
+                hoverColor: Colors.red,
               ),
               Container(
                 height: 100,
