@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -61,65 +62,102 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 20,
       ),
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("simple"),
-            FlutterLogo(),
-            Placeholder(
-              fallbackHeight: 20,
-              fallbackWidth: 30,
-            ),
-            Icon(
-              Icons.access_alarms,
-              color: Colors.pinkAccent,
-              size: 50,
-              semanticLabel: "clock",
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                alignment: Alignment.topLeft,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("simple"),
+              FlutterLogo(),
+              Placeholder(
+                fallbackHeight: 20,
+                fallbackWidth: 30,
+              ),
+              Icon(
+                Icons.access_alarms,
+                color: Colors.pinkAccent,
+                size: 50,
+                semanticLabel: "clock",
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  height: 100,
+                  width: 100,
+                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xff89e36b),
+                          Color.fromRGBO(188, 102, 237, 1),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 5,
+                          spreadRadius: 2,
+                          //offset: Offset(0, 0),
+                        )
+                      ]),
+                  // child: Container(
+                  //   height: 10,
+                  //   width: 10,
+                  //   color: Colors.white,
+                  // ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
                 height: 100,
                 width: 100,
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xff89e36b),
-                        Color.fromRGBO(188, 102, 237, 1),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 5,
-                        spreadRadius: 2,
-                        //offset: Offset(0, 0),
-                      )
-                    ]),
-                // child: Container(
-                //   height: 10,
-                //   width: 10,
-                //   color: Colors.white,
-                // ),
+                color: Colors.pink,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: 100,
-              width: 100,
-              color: Colors.pink,
-            ),
-          ],
+              //image
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image(
+                  image: AssetImage("assets/a.png"),
+                  height: 200,
+                  width: 300,
+                  alignment: Alignment.topLeft,
+                  fit: BoxFit.fitHeight,
+                  color: Colors.blue,
+                  colorBlendMode: BlendMode.colorBurn,
+                ),
+              ),
+              Image.asset(
+                "assets/a.png",
+                height: 100,
+                width: 100,
+              ),
+              Image.network(
+                "https://flutter.dev/images/flutter-logo-sharing.png",
+              ),
+              RaisedButton(
+                onPressed: () {
+                  print("pressed");
+                },
+                child: Text("Tap on it"),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                color: Colors.green,
+                mouseCursor: MouseCursor.defer,
+              ),
+              Container(
+                height: 100,
+              )
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
